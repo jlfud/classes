@@ -13,3 +13,6 @@ char* parent::getTitle(){
 int parent::getYear(){
    return year;
 }
+int parent::getType(){
+  return 0; 
+}

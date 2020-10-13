@@ -11,6 +11,7 @@ public:
   parent();
   char* getTitle();
   int getYear();
+  int getType();
 private:
   char title[100];
   int year;
