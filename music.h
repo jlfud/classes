@@ -10,7 +10,6 @@ class music : public parent{
   int getDuration();
   char* getPublisher();
   int getType();
- private:
   char artist[50];
   int duration;
   char publisher[50]; 

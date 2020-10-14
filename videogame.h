@@ -9,7 +9,6 @@ class videogame : public parent{
   char* getPublisher();
   float getRating();
   int getType();
- private:
   char publisher[50];
   float rating;
 };
