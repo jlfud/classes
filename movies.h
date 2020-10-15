@@ -10,7 +10,6 @@ class movies : public parent {
   int getDuration();
   float getRating();
   int getType();
- private:
   char director[50];
   int duration;
   float rating;

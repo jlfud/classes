@@ -8,7 +8,7 @@ class videogame : public parent{
   videogame();
   char* getPublisher();
   float getRating();
-  int getType();
-  char publisher[50];
-  float rating;
+  virtual int getType();
+  virtual char publisher[100];
+  virtual float rating;
 };

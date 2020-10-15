@@ -11,9 +11,12 @@ public:
   parent();
   char* getTitle();
   int getYear();
-  int getType();
-  char title[100];
-  int year;
+  virtual int getType();
+  virtual char title[100];
+  virtual int year;
+  virtual char artist[100];
+  virtual int duration;
+  virtual char publisher[100];
 };
 
 #endif

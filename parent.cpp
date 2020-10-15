@@ -14,5 +14,5 @@ int parent::getYear(){
    return year;
 }
 int parent::getType(){
-  return 0; 
+  return 0;
 }

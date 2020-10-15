@@ -9,8 +9,8 @@ class music : public parent{
   char* getArtist();
   int getDuration();
   char* getPublisher();
-  int getType();
-  char artist[50];
-  int duration;
-  char publisher[50]; 
+  virtual int getType();
+  virtual char artist[100];
+  virtual int duration;
+  virtual char publisher[100]; 
 };
