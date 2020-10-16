@@ -71,6 +71,25 @@ void ADD(vector<parent*> &library){
       library.push_back(mus);
       break;
     }
+    else if(strcmp(input, "movie") == 0){
+      //movie
+      movies* mov = new movies();
+      cout << "title: " << endl;
+      cin >> mov->title;
+      cout << "year: " << endl;
+      cin >> mov->year;
+      cout << "director: " << endl;
+      cin >> mov->director;
+      cout << "duration: " << endl;
+      cin >> mov->duration;
+      cout << "rating: " << endl;
+      cin >> mov->rating;
+      library.push_back(mov);
+      break;
+    }
+    else{
+      cout << "invalid input " << endl;
+    }
   }
 }
 void DELETE(vector<parent*> &library){
@@ -102,11 +121,12 @@ void DELETE(vector<parent*> &library){
           cout << "would you like to delete this music? (yes/no) " << endl;
           cin >> input;
           if(strcmp(input, "yes") == 0){
-            cout << (*it)->title << " deleted";
-            delete *it;
-            it = library.erase(it);
+	    cout << (*it)->title << " deleted";
+	    delete *it;
+	    library.erase(it);
+	    cout << endl;
+	    break;
           }
-
         }
         if((*it)->getType() == 2){ //movie
           cout << "title: " << (*it)->title << endl;
@@ -118,11 +138,12 @@ void DELETE(vector<parent*> &library){
           cout << "would you like to delete this movie? (yes/no) " << endl;
           cin >> input;
           if(strcmp(input, "yes") == 0){
-            cout << (*it)->title << " deleted";
-            delete *it;
-            it = library.erase(it);
+	    cout << (*it)->title << " deleted";
+	    delete *it;
+	    library.erase(it);
+	    cout << endl;
+	    break;
           }
-
         }
         if((*it)->getType() == 3){ //game
           cout << "title: " << (*it)->title << endl;
@@ -130,12 +151,14 @@ void DELETE(vector<parent*> &library){
           cout << "rating: " << (*it)->getRating() << endl;
           cout << "publisher: " << (*it)->getPublisher() << endl;
           cout << endl;
-          cout << "would you like to delete this music? (yes/no) " << endl;
+          cout << "would you like to delete this game? (yes/no) " << endl;
           cin >> input;
           if(strcmp(input, "yes") == 0){
-           cout << (*it)->title << " deleted";
-           delete *it;
-           it = library.erase(it);
+	    cout << (*it)->title << " deleted";
+	    delete *it;
+	    library.erase(it);
+	    cout << endl;
+	    break;
 	  }
 	}
       }
@@ -156,11 +179,13 @@ void DELETE(vector<parent*> &library){
          cout << "would you like to delete this music? (yes/no) " << endl;
          cin >> input;
          if(strcmp(input, "yes") == 0){
-           cout << (*it)->title << " deleted";
+           cout << (*it)->title << " deleted" << endl;
            delete *it;
-           it = library.erase(it);
+           library.erase(it);
+	   cout << endl;
+	   break;
          }
-       }
+       } 
        if((*it)->getType() == 2){ //movie
          cout << "title: " << (*it)->title << endl;
          cout << "year: " << (*it)->year << endl;
@@ -173,7 +198,9 @@ void DELETE(vector<parent*> &library){
          if(strcmp(input, "yes") == 0){
            cout << (*it)->title << " deleted";
            delete *it;
-           it = library.erase(it);
+           library.erase(it);
+	   cout << endl;
+	   break;
          }
        }
        if((*it)->getType() == 3){ //game
@@ -186,11 +213,13 @@ void DELETE(vector<parent*> &library){
          cin >> input;
          if(strcmp(input, "yes") == 0){
            cout << (*it)->title << " deleted";
+	   cout << endl;
            delete *it;
-           it = library.erase(it);
+           library.erase(it);
+	   cout << endl;
+	   break;
 	 }
        }
-
      }
    }
   }
