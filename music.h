@@ -10,7 +10,7 @@ class music : public parent{
   int getDuration();
   char* getPublisher();
   virtual int getType();
-  virtual char artist[100];
-  virtual int duration;
-  virtual char publisher[100]; 
+  char artist[100];
+  int duration;
+  char publisher[100]; 
 };

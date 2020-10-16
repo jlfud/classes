@@ -9,7 +9,7 @@ class movies : public parent {
   char* getDirector();
   int getDuration();
   float getRating();
-  int getType();
+  virtual int getType();
   char director[50];
   int duration;
   float rating;

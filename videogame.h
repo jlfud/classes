@@ -9,6 +9,6 @@ class videogame : public parent{
   char* getPublisher();
   float getRating();
   virtual int getType();
-  virtual char publisher[100];
-  virtual float rating;
+  char publisher[100];
+  float rating;
 };

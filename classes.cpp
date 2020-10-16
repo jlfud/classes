@@ -116,10 +116,57 @@ void SEARCH(vector<parent*> library){
 	if((*it)->getType() == 1){ //music
 	  cout << "title: " << (*it)->title << endl;
 	  cout << "year: " << (*it)->year << endl;
-	  cout << "artist: " << (*it)->artist << endl;
-	  cout << "duration: " << (*it)->duration << endl;
-	  cout << "publisher: " << (*it)->publisher << endl;
+	  cout << "publisher " << (*it)->getPublisher() << endl;
+	  cout << "artist: " << (*it)->getArtist() << endl;
+	  cout << "duration: " << (*it)->getDuration() << endl;
+	  cout << endl;
  	}
+	if((*it)->getType() == 2){ //movie
+          cout << "title: " << (*it)->title << endl;
+          cout << "year: " << (*it)->year << endl;
+          cout << "director: " << (*it)->getDirector() << endl;
+          cout << "duration: " << (*it)->getDuration() << endl;
+          cout << "rating: " << (*it)->getRating() << endl;
+	  cout << endl;
+        }
+	if((*it)->getType() == 3){ //game
+          cout << "title: " << (*it)->title << endl;
+          cout << "year: " << (*it)->year << endl;
+          cout << "rating: " << (*it)->getRating() << endl;
+	  cout << "publisher: " << (*it)->getPublisher() << endl;
+	  cout << endl;
+        }
+      }
+    }
+  }
+  else if(strcmp(input, "year") == 0){
+    cout << "what is the year of the media? " << endl;
+    cin >> year;
+    for(vector<parent*>::iterator it = library.begin(); it != library.end(); it++){
+      if((*it)->year == year){
+	if((*it)->getType() == 1){ //music
+	  cout << "title: " << (*it)->title << endl;
+	  cout << "year: " << (*it)->year << endl;
+	  cout << "publisher " << (*it)->getPublisher() << endl;
+	  cout << "artist: " << (*it)->getArtist() << endl;
+	  cout << "duration: " << (*it)->getDuration() << endl;
+	  cout << endl;
+	}
+	if((*it)->getType() == 2){ //movie
+	  cout << "title: " << (*it)->title << endl;
+	  cout << "year: " << (*it)->year << endl;
+	  cout << "director: " << (*it)->getDirector() << endl;
+	  cout << "duration: " << (*it)->getDuration() << endl;
+	  cout << "rating: " << (*it)->getRating() << endl;
+	  cout << endl;
+	}
+	if((*it)->getType() == 3){ //game
+	  cout << "title: " << (*it)->title << endl;
+	  cout << "year: " << (*it)->year << endl;
+	  cout << "rating: " << (*it)->getRating() << endl;
+	  cout << "publisher: " << (*it)->getPublisher() << endl;
+	  cout << endl;
+	}
       }
     }
   }
