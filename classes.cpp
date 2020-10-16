@@ -9,8 +9,8 @@
 using namespace std;
 
 void ADD(vector<parent*> &library);
-void SEARCH(vector<parent*> library);
 void DELETE(vector<parent*> &library);
+void SEARCH(vector<parent*> library);
 
 int main(){
   vector<parent*> library;
@@ -38,7 +38,6 @@ int main(){
   }
   return 0;
 }
-
 void ADD(vector<parent*> &library){
   char input[20];
   cout << "would you like to add a game, music, movie?" << endl;
@@ -71,28 +70,130 @@ void ADD(vector<parent*> &library){
       cin >> mus->publisher;
       library.push_back(mus);
       break;
-      
     }
-    else if(strcmp(input, "movie") == 0){
-      movies* mov = new movies();
-      cout << "title: " << endl;
-      cin >> mov->title;
-      cout << "year: " << endl;
-      cin >> mov->year;
-      cout << "director: " << endl;
-      cin >> mov->director;
-      cout << "duration: " << endl;
-      cin >> mov->duration;
-      cout << "rating: " << endl;
-      cin >> mov->rating;
-      library.push_back(mov);
+  }
+}
+void DELETE(vector<parent*> &library){
+  char input[20];
+  char title[20];
+  int year;
+  while(true){
+    cout << "would you like to search by title or year?" << endl;
+    cin >> input;
+    if(strcmp(input, "title") == 0 || strcmp(input, "year") == 0){
       break;
     }
     else{
-      cout << "invalid input! try again!" << endl;
+      cout << "invalid input!" << endl;
     }
   }
-  cout << "media added!" << endl;
+  if(strcmp(input, "title") == 0){
+    cout << "what is the title of the media? " << endl;
+    cin >> title;
+    for(vector<parent*>::iterator it = library.begin(); it != library.end(); it++){
+      if(strcmp((*it)->title, title)== 0){
+        if((*it)->getType() == 1){ //music
+          cout << "title: " << (*it)->title << endl;
+          cout << "year: " << (*it)->year << endl;
+          cout << "publisher " << (*it)->getPublisher() << endl;
+          cout << "artist: " << (*it)->getArtist() << endl;
+          cout << "duration: " << (*it)->getDuration() << endl;
+          cout << endl;
+          cout << "would you like to delete this music? (yes/no) " << endl;
+          cin >> input;
+          if(strcmp(input, "yes") == 0){
+            cout << (*it)->title << " deleted";
+            delete *it;
+            it = library.erase(it);
+          }
+
+        }
+        if((*it)->getType() == 2){ //movie
+          cout << "title: " << (*it)->title << endl;
+          cout << "year: " << (*it)->year << endl;
+          cout << "director: " << (*it)->getDirector() << endl;
+          cout << "duration: " << (*it)->getDuration() << endl;
+          cout << "rating: " << (*it)->getRating() << endl;
+          cout << endl;
+          cout << "would you like to delete this movie? (yes/no) " << endl;
+          cin >> input;
+          if(strcmp(input, "yes") == 0){
+            cout << (*it)->title << " deleted";
+            delete *it;
+            it = library.erase(it);
+          }
+
+        }
+        if((*it)->getType() == 3){ //game
+          cout << "title: " << (*it)->title << endl;
+          cout << "year: " << (*it)->year << endl;
+          cout << "rating: " << (*it)->getRating() << endl;
+          cout << "publisher: " << (*it)->getPublisher() << endl;
+          cout << endl;
+          cout << "would you like to delete this music? (yes/no) " << endl;
+          cin >> input;
+          if(strcmp(input, "yes") == 0){
+           cout << (*it)->title << " deleted";
+           delete *it;
+           it = library.erase(it);
+	  }
+	}
+      }
+    }
+  }
+  else if(strcmp(input, "year") == 0){
+   cout << "what is the year of the media? " << endl;
+   cin >> year;
+   for(vector<parent*>::iterator it = library.begin(); it != library.end(); it++){
+     if((*it)->year == year){
+       if((*it)->getType() == 1){ //music
+	 cout << "title: " << (*it)->title << endl;
+	 cout << "year: " << (*it)->year << endl;
+         cout << "publisher " << (*it)->getPublisher() << endl;
+         cout << "artist: " << (*it)->getArtist() << endl;
+         cout << "duration: " << (*it)->getDuration() << endl;
+         cout << endl;
+         cout << "would you like to delete this music? (yes/no) " << endl;
+         cin >> input;
+         if(strcmp(input, "yes") == 0){
+           cout << (*it)->title << " deleted";
+           delete *it;
+           it = library.erase(it);
+         }
+       }
+       if((*it)->getType() == 2){ //movie
+         cout << "title: " << (*it)->title << endl;
+         cout << "year: " << (*it)->year << endl;
+         cout << "director: " << (*it)->getDirector() << endl;
+         cout << "duration: " << (*it)->getDuration() << endl;
+         cout << "rating: " << (*it)->getRating() << endl;
+         cout << endl;
+         cout << "would you like to delete this movie? (yes/no) " << endl;
+         cin >> input;
+         if(strcmp(input, "yes") == 0){
+           cout << (*it)->title << " deleted";
+           delete *it;
+           it = library.erase(it);
+         }
+       }
+       if((*it)->getType() == 3){ //game
+         cout << "title: " << (*it)->title << endl;
+         cout << "year: " << (*it)->year << endl;
+         cout << "rating: " << (*it)->getRating() << endl;
+         cout << "publisher: " << (*it)->getPublisher() << endl;
+         cout << endl;
+         cout << "would you like to delete this music? (yes/no) " << endl;
+         cin >> input;
+         if(strcmp(input, "yes") == 0){
+           cout << (*it)->title << " deleted";
+           delete *it;
+           it = library.erase(it);
+	 }
+       }
+
+     }
+   }
+  }
 }
 void SEARCH(vector<parent*> library){
   char input[20];
@@ -110,30 +211,30 @@ void SEARCH(vector<parent*> library){
   }
   if(strcmp(input, "title") == 0){
     cout << "what is the title of the media? " << endl;
-    cin >> title; 
+    cin >> title;
     for(vector<parent*>::iterator it = library.begin(); it != library.end(); it++){
       if(strcmp((*it)->title, title) == 0){
-	if((*it)->getType() == 1){ //music
-	  cout << "title: " << (*it)->title << endl;
-	  cout << "year: " << (*it)->year << endl;
-	  cout << "publisher " << (*it)->getPublisher() << endl;
-	  cout << "artist: " << (*it)->getArtist() << endl;
-	  cout << "duration: " << (*it)->getDuration() << endl;
-	  cout << endl;
- 	}
-	if((*it)->getType() == 2){ //movie
+        if((*it)->getType() == 1){ //music
+          cout << "title: " << (*it)->title << endl;
+          cout << "year: " << (*it)->year << endl;
+          cout << "publisher " << (*it)->getPublisher() << endl;
+          cout << "artist: " << (*it)->getArtist() << endl;
+          cout << "duration: " << (*it)->getDuration() << endl;
+          cout << endl;
+        }
+        if((*it)->getType() == 2){ //movie
           cout << "title: " << (*it)->title << endl;
           cout << "year: " << (*it)->year << endl;
           cout << "director: " << (*it)->getDirector() << endl;
           cout << "duration: " << (*it)->getDuration() << endl;
           cout << "rating: " << (*it)->getRating() << endl;
-	  cout << endl;
+          cout << endl;
         }
-	if((*it)->getType() == 3){ //game
+        if((*it)->getType() == 3){ //game
           cout << "title: " << (*it)->title << endl;
           cout << "year: " << (*it)->year << endl;
           cout << "rating: " << (*it)->getRating() << endl;
-	  cout << "publisher: " << (*it)->getPublisher() << endl;
+          cout << "publisher: " << (*it)->getPublisher() << endl;
 	  cout << endl;
         }
       }
@@ -170,7 +271,4 @@ void SEARCH(vector<parent*> library){
       }
     }
   }
-}
-void DELETE(vector<parent*> &library){
-
 }
