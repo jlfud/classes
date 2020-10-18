@@ -7,42 +7,43 @@
 #include "movies.h"
 
 using namespace std;
-
+//function prototypes
 void ADD(vector<parent*> &library);
 void DELETE(vector<parent*> &library);
 void SEARCH(vector<parent*> library);
 
 int main(){
-  vector<parent*> library;
-  char in[15];
+  vector<parent*> library; //library
+  char in[15]; //for inputs
   cout << "classes. Commands: add, search, delete, quit" << endl;
-  while(true){
+  while(true){ //loop and and call methods based on user input. 
     cout << "input a command: " << endl;
     cin >> in;
     if(strcmp(in,"add") == 0){
-      ADD(library);
+      ADD(library); //add a media
     }
     else if(strcmp(in, "search") == 0){
-      SEARCH(library);
+      SEARCH(library); //search for media(s)
     }
     else if(strcmp(in, "delete") == 0){
-      DELETE(library);
+      DELETE(library); //delete a media
     }
     else if(strcmp(in, "quit") == 0){
       cout << "bye!" << endl;
-      return 0;
+      return 0; //end the program
     }
     else{
-      cout << "unknown input, please try again." << endl;
+      cout << "unknown input, please try again." << endl; //have the user re-input
     }
   }
   return 0;
 }
-void ADD(vector<parent*> &library){
+void ADD(vector<parent*> &library){ //add function
   char input[20];
-  cout << "would you like to add a game, music, movie?" << endl;
+  cout << "would you like to add a game, music, movie?" << endl; //prompt the user for what they would like to add
   while(true){
     cin >> input;
+    //for each type of media, get the corresponding attributes
     if(strcmp(input, "game") == 0){
       videogame* game = new videogame();
       cout << "title:" << endl;
@@ -92,12 +93,13 @@ void ADD(vector<parent*> &library){
     }
   }
 }
-void DELETE(vector<parent*> &library){
-  char input[20];
+void DELETE(vector<parent*> &library){ //delete function
+  char input[20]; 
   char title[20];
   int year;
   while(true){
-    cout << "would you like to search by title or year?" << endl;
+    //prompt for delete by title or year
+    cout << "would you like to delete by title or year?" << endl;
     cin >> input;
     if(strcmp(input, "title") == 0 || strcmp(input, "year") == 0){
       break;
@@ -106,6 +108,8 @@ void DELETE(vector<parent*> &library){
       cout << "invalid input!" << endl;
     }
   }
+  //search for a matching title, then confirm if you would like to delete
+  //list the corresponding attributes for each media
   if(strcmp(input, "title") == 0){
     cout << "what is the title of the media? " << endl;
     cin >> title;
@@ -151,7 +155,7 @@ void DELETE(vector<parent*> &library){
           cout << "rating: " << (*it)->getRating() << endl;
           cout << "publisher: " << (*it)->getPublisher() << endl;
           cout << endl;
-          cout << "would you like to delete this game? (yes/no) " << endl;
+          cout << "would you like to delete this GAME? (yes/no) " << endl;
           cin >> input;
           if(strcmp(input, "yes") == 0){
 	    cout << (*it)->title << " deleted";
@@ -164,6 +168,8 @@ void DELETE(vector<parent*> &library){
       }
     }
   }
+  //search for a media with the same year, confirm for delete
+  //then list the corresponding attributes for each media type
   else if(strcmp(input, "year") == 0){
    cout << "what is the year of the media? " << endl;
    cin >> year;
@@ -224,6 +230,7 @@ void DELETE(vector<parent*> &library){
    }
   }
 }
+//search function
 void SEARCH(vector<parent*> library){
   char input[20];
   char title[20];
@@ -238,6 +245,7 @@ void SEARCH(vector<parent*> library){
       cout << "invalid input!" << endl;
     }
   }
+  //list all media with either the same title or year
   if(strcmp(input, "title") == 0){
     cout << "what is the title of the media? " << endl;
     cin >> title;

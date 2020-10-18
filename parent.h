@@ -5,7 +5,9 @@
 #include <cstring>
 
 using namespace std;
-
+//parent class
+//header file for all functions and variables
+//basically the same for other header files except less
 class parent{
 public:
   parent();

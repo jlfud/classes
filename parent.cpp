@@ -3,7 +3,8 @@
 #include "parent.h"
 
 using namespace std;
-
+//cpp file for parent class
+//basically the same for other cpp class files except less
 parent::parent(){
   
 }
