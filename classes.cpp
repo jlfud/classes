@@ -127,7 +127,7 @@ void DELETE(vector<parent*> &library){ //delete function
           if(strcmp(input, "yes") == 0){
 	    cout << (*it)->title << " deleted";
 	    delete *it;
-	    library.erase(it);
+	    it = library.erase(it);
 	    cout << endl;
 	    break;
           }
@@ -144,7 +144,7 @@ void DELETE(vector<parent*> &library){ //delete function
           if(strcmp(input, "yes") == 0){
 	    cout << (*it)->title << " deleted";
 	    delete *it;
-	    library.erase(it);
+	    it = library.erase(it);
 	    cout << endl;
 	    break;
           }
@@ -160,7 +160,7 @@ void DELETE(vector<parent*> &library){ //delete function
           if(strcmp(input, "yes") == 0){
 	    cout << (*it)->title << " deleted";
 	    delete *it;
-	    library.erase(it);
+	    it = library.erase(it);
 	    cout << endl;
 	    break;
 	  }
@@ -215,7 +215,7 @@ void DELETE(vector<parent*> &library){ //delete function
          cout << "rating: " << (*it)->getRating() << endl;
          cout << "publisher: " << (*it)->getPublisher() << endl;
          cout << endl;
-         cout << "would you like to delete this music? (yes/no) " << endl;
+         cout << "would you like to delete this GAME? (yes/no) " << endl;
          cin >> input;
          if(strcmp(input, "yes") == 0){
            cout << (*it)->title << " deleted";
